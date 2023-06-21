@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+h1, h2, h3, h4, h5, h6, a, p, .section-heading, .card-title, .title {
+    font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
+li {
+    position: relative;
+    display: inline-block;
+}
+li:after {
+    content: "";
+    position: absolute;
+    left:0;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background-color: rgb(179,203,68);
+    transition: width .4s ease-in-out;
+}
+li:hover:after {
+    width: 100%;
+}
+.second-section{
+    background-color: rgb(179,203,68);
+}
+.first-section{
+    z-index:-1;
+}
+#intiative-title{
+    color: rgb(64, 95, 24);
+}
+html {
+    scroll-padding-top: 100px; <-- replace with height of your position: fixed navbar
+}
+#menu{
+    z-index:2; 
+}
+#score-card{
+    z-index:0; 
+}
+#uploadDiv{
+    z-index:1; 
+}
+#instructionsDiv{
+    z-index:-1; 
+
+}
+label{
+    font-weight:bold
+}

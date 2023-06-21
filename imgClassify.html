@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+</head>
+<body>
+    <h1>Image Classifier</h1>
+    <form method="POST">
+        <input type="file" id="image-upload" accept="image/*"><br><br>
+        <button type="button" onclick="classifyImage()">Check</button>
+        <p id="prediction"></p>
+    </form>
+
+    <script>
+        function classifyImage() {
+            var fileInput = document.getElementById('image-upload');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('image', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/classify', true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var prediction = response['class'];
+                    document.getElementById('prediction').innerHTML = 'Predicted class: ' + prediction;
+                } else {
+                    alert('Error: ' + xhr.statusText);
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+</body>
+</html>
